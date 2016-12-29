@@ -55,7 +55,10 @@ app.post('/sign', function (request, response) {
 
 app.post('/verify', function (request, response) {
   try {
-    var decoded = jwt.verify(request.body.token, request.body.secret);
+    jwt.verify(request.body.token, request.body.secret);
+
+    var decoded = jwt.decode(request.body.token, {complete: true});
+
     response.send(new Bag(decoded));
   } catch (ex) {
     response.send(new Bag().addError(ex.message, undefined, errors.INVALID_VERIFICATION));
