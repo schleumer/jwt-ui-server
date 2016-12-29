@@ -35,7 +35,7 @@ app.use(bodyParser.json());
 app.set('port', (process.env.PORT || 5000));
 
 app.get('/', function(request, response) {
-  response.send('pages/index');
+  response.send(`What time is it? It's high noon somewhere.`);
 });
 
 app.post('/sign', function (request, response) {
